@@ -18,7 +18,7 @@ const Body = z.object({
 
 export const runtime = "nodejs";
 
-async function verifyWhoami(stamp: unknown): Promise<{ orgId: string }> {
+async function verifyWhoami(stamp: unknown): Promise<{ orgId: string, address: string }> {
   const res = await fetch(`${ALCHEMY_BASE_URL}/signer/v1/whoami`, {
     method: "POST",
     headers: {
@@ -38,14 +38,14 @@ async function verifyWhoami(stamp: unknown): Promise<{ orgId: string }> {
   if (!data?.orgId) {
     throw new Error("Alchemy whoami response missing orgId");
   }
-  return { orgId: data.orgId as string };
+  return { orgId: data.orgId as string, address: data.address as string };
 }
 
 export async function POST(req: Request) {
   try {
     const json = await req.json();
     const { whoamiStamp } = Body.parse(json);
-    const { orgId } = await verifyWhoami(whoamiStamp);
+    const { orgId, address } = await verifyWhoami(whoamiStamp);
 
     // Generate keypair and persist the address as the "publicKey"
     // Note: Account Kit permission builder expects the address string here (see rl-swarm reference)
@@ -53,7 +53,7 @@ export async function POST(req: Request) {
     const account = privateKeyToAccount(privateKey);
     const addressAsPublicKey = account.address;
 
-    await addKey(orgId, addressAsPublicKey, privateKey);
+    await addKey(orgId, address, addressAsPublicKey, privateKey);
 
     return NextResponse.json({ publicKey: addressAsPublicKey }, { status: 200 });
   } catch (err: any) {

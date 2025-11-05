@@ -23,6 +23,7 @@ const User = z.object({
   updatedAt: z.number(),
   latestPublicKey: z.string().optional(),
   accountAddress: z.string().optional(),
+  address: z.string().optional(),
 });
 export type User = z.infer<typeof User>;
 
@@ -89,13 +90,13 @@ export async function upsertUser(orgId: string, data: Omit<Partial<User>, "orgId
   return merged;
 }
 
-export async function addKey(orgId: string, publicKey: string, privateKey: string): Promise<KeyEntry> {
+export async function addKey(orgId: string, address: string, publicKey: string, privateKey: string): Promise<KeyEntry> {
   const db = await readDB();
   const now = Date.now();
   const org = db[orgId] ?? { user: { orgId, updatedAt: now }, keys: [] } as OrgRecord;
   const entry: KeyEntry = KeyEntry.parse({ publicKey, privateKey, createdAt: now, activated: false });
   const list = [...org.keys, entry];
-  const user = User.parse({ ...org.user, latestPublicKey: publicKey, orgId, updatedAt: now });
+  const user = User.parse({ ...org.user, address: address, latestPublicKey: publicKey, orgId, updatedAt: now });
   db[orgId] = { user, keys: list };
   await writeDB(db);
   return entry;

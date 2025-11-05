@@ -24,6 +24,7 @@ class ContractArgs:
     accountAddress: str
     gitRef: str
     huggingFaceID: str
+    deferredActionDigest: str
 
 
 def encode_args(args: ContractArgs) -> str:
@@ -79,9 +80,7 @@ def call_contract(args: ContractArgs):
             {
                 "capabilities": {
                     "paymasterService": {"policyId": PAYMASTER_POLICY_ID},
-                    # "permissions": {
-                    #    "context": f"0x01{user_key_data.get('deferredActionDigest')[2:]}"
-                    # },
+                    "permissions": {"context": f"0x01{args.deferredActionDigest[2:]}"},
                 },
                 "calls": [
                     {
@@ -143,18 +142,20 @@ def submit_hf_upload(hf_id: str, git_hash: str):
         user_key_map = json.load(f)
 
     user_key_data = {}
+    user_account_data = {}
     for key in user_key_map.keys():
         if "keys" not in user_key_map[key] or len(user_key_map[key].get("keys")) == 0:
             raise ValueError(f"No keys found for user. Did you sign in with Alchemy?")
+        user_account_data = user_key_map[key]
         user_key_data = user_key_map[key].get("keys")[0]
 
     if len(user_key_data.keys()) == 0:
         raise ValueError(f"No keys found for user. Did you sign in with Alchemy?")
 
-    # accountAddress is overloaded
-    owner_address = user_key_data.get("publicKey")
+    owner_address = user_account_data.get("user").get("address")
     private_key = user_key_data.get("privateKey")
     accountAddress = call_get_account(owner_address)
+    deferred_action_digest = user_key_data.get("deferredActionDigest")
 
     logger.info(f"Using account address: {accountAddress}")
 
@@ -162,6 +163,7 @@ def submit_hf_upload(hf_id: str, git_hash: str):
         "huggingFaceID": hf_id,
         "accountAddress": accountAddress,
         "gitRef": git_hash,
+        "deferredActionDigest": deferred_action_digest,
     }
 
     resp_data = call_contract(ContractArgs(**contract_args))
@@ -182,6 +184,9 @@ def submit_hf_upload(hf_id: str, git_hash: str):
         "method": "wallet_sendPreparedCalls",
         "params": [
             {
+                "capabilities": {
+                    "permissions": {"context": f"0x01{deferred_action_digest[2:]}"},
+                },
                 "type": resp_data["result"].get("type"),
                 "data": resp_data["result"].get("data"),
                 "chainId": resp_data["result"].get("chainId"),
