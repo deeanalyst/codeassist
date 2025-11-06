@@ -67,7 +67,7 @@ sudo update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/pytho
 sudo update-alternatives --config python3
 ```
 WHen you run the immediately above code block, it may take some time to fully install, 3-10 miutes, depending on your CPU Power.
-At this point you will be prompted to choose a number, press `Enter` once and check Python version again with ` python --version`.
+At this point you will be prompted to choose a number, press `Enter` once and check Python version again with `python --version`.
 
 ## UV
 
@@ -97,7 +97,7 @@ uv --version
 To download the code, simply clone the repository:
 
 ```bash
-git clone https://github.com/gensyn-ai/codeassist.git
+git clone https://github.com/deeanalyst/codeassist.git
 cd codeassist
 ```
 
@@ -107,12 +107,12 @@ To run CodeAssist, simply execute using any of the following command:
 
 #### Rented VPS or Local Machine
 1. Open a screen (Rented Server else move to Step 2)
-
-   ```bash
-   screen -S codeassist
-   ```
+```bash
+screen -S codeassist
+```
 
 2. Setup environment
+
 ```bash
 export UV_HTTP_TIMEOUT=600   # 10 minutes
 python3 -m venv .venv
@@ -137,6 +137,7 @@ print("Torch version:", torch.__version__)
 print("CUDA available:", torch.cuda.is_available())
 EOF
 ```
+
 If your screen looks exactly as this image below, congrats!
 
 
