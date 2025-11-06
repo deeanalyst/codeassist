@@ -27,12 +27,19 @@ UV is required to manage the dependencies of the main script. It can be installe
 
 ```bash
 brew install uv
+
+### use the official installer
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 ### Linux (or alternate MacOS install, for those without Brew)
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
+source ~/.bashrc
+
+### check version
+uv --version
 ```
 
 # Downloading the Code
@@ -49,6 +56,11 @@ cd codeassist
 To run CodeAssist, simply execute the following command:
 
 ```bash
+python3 -m venv .venv
+
+source .venv/bin/activate
+# if not worked, then:
+. .venv/bin/activate
 uv run run.py
 ```
 
