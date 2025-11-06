@@ -89,8 +89,11 @@ cd codeassist
 
 # Running
 
-To run CodeAssist, simply execute the following command:
+To run CodeAssist, simply execute using any of the following command:
 
+#### Rented VPS or Local Machine
+1. Setup environment
+   
 ```bash
 export UV_HTTP_TIMEOUT=600   # 10 minutes
 python3 -m venv .venv
@@ -98,16 +101,39 @@ python3 -m venv .venv
 source .venv/bin/activate
 # if not worked, then:
 . .venv/bin/activate
+```
+
+2. Install CPU pip packages
+
+```bash
+uv pip uninstall -y torch triton torchvision torchaudio
+uv pip install --index-url https://download.pytorch.org/whl/cpu torch==2.9.0 torchvision torchaudio
+uv pip install numpy
+```
+
+3. Run start python script
+
+```bash
 uv run run.py
 ```
 
 ## HuggingFace Token
 
 To start CodeAssist, you will need to have a HuggingFace token. Follow [these instructions](https://huggingface.co/docs/hub/en/security-tokens) and generate a token with `Write` access.
+> Now when you are prompted to use the HF token, when pasting it, it on't be visible. 
+> In the event you feel you have made a mistake, run `Ctrl + C` then `nano .env` edit the token and restart codeassist with `uv run run.py`.
 
 ## Web UI
 
-After the script is running, your browser should open automatically but if it doesn't, open a window and go to [localhost:3000](http://localhost:3000) to open CodeAssist.
+After the script is running, your browser should open automatically but if it doesn't, open a window and go to [localhost:3000](http://localhost:3000) to open CodeAssist. 
+`N/B:` You will only get to this point if the `Ollama 0.11.10` model suuccessfully downloaded and pulled successfully. You won't get the logs at this point, but if you notice it takes longer than 5 minutes, terminate again using `Ctrl + C`.
+Run the following command to manually pull docker images manually, for me this is fastest and doesn't test your patience.
+```bash
+docker pull ollama/ollama:0.11.10
+docker pull gensynai/codeassist-policy-model:main 2>&1 | tail -20
+
+```
+At this point 
 
 When the web UI loads, you'll see a login modal where you can log in with email (which sends a one-time passcode) or with Google. After logging in for the first time, your local credentials will be stored in `persistent-data/auth/userKeyMap.json`.
 
