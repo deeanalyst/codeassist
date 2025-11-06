@@ -11,13 +11,49 @@ Unlike typical code assistants, CodeAssist writes directly in your editor as you
 
 Get started with installing CodeAssist.
 
-## Docker
+## Install Dependencies
 
-Install [Docker](https://docs.docker.com/engine/install/) on your system, according to the instructions for your machine.
+### Install Docker
+```bash
+sudo apt update -y && sudo apt upgrade -y
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update -y && sudo apt upgrade -y
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Test Docker
+sudo docker run hello-world
+
+sudo systemctl enable docker
+sudo systemctl restart docker
+```
 
 ## Python
 
 Python is required to run the main script that handles your environment. We require a version no older than 3.10.
+
+```bash
+# Install Python 3.10
+sudo apt install -y python3.10 python3.10-venv python3.10-distutils
+
+# Make python3.10 the default python (optional)
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
+
+# Verify version
+python --version
+```
 
 ## UV
 
@@ -56,6 +92,7 @@ cd codeassist
 To run CodeAssist, simply execute the following command:
 
 ```bash
+export UV_HTTP_TIMEOUT=600   # 10 minutes
 python3 -m venv .venv
 
 source .venv/bin/activate
