@@ -184,13 +184,7 @@ Option 1: Use NGROK
 
 1. Signup at [Ngrok Dashboard](https://dashboard.ngrok.com/) and complete the onboarding steps.
 2. Install `ngrok` on your server
-   ```bash
-   curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
-  | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
-  && echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \
-  | sudo tee /etc/apt/sources.list.d/ngrok.list \
-  && sudo apt update \
-  && sudo apt install ngrok```
+   <pre> ```bash curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \ | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && \ echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \ | sudo tee /etc/apt/sources.list.d/ngrok.list && \ sudo apt update && \ sudo apt install -y ngrok ``` </pre>
 
 When the web UI loads, you'll see a login modal where you can log in with email (which sends a one-time passcode) or with Google. After logging in for the first time, your local credentials will be stored in `persistent-data/auth/userKeyMap.json`.
 
