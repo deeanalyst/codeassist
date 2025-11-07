@@ -233,7 +233,7 @@ You should see https://localhost:3000 auto pop up or load in your default browse
    ```bash
    lt --port 3000
    ```
-   Copy the link that gets outputted like in the image below or hold down `Ctrl` while left-clicking the url.
+   Copy the link that gets outputted like in the image below or hold down `Ctrl` while left-clicking the url. The `VPS IP`  will be your password when you load the URL
 
    <img width="646" height="207" alt="image" src="https://github.com/user-attachments/assets/210c691b-d463-4b39-abf4-33286abe42ac" />
 
@@ -254,7 +254,7 @@ When you stop typing, CodeAssist takes initiative. It writes directly into your 
 
 CodeAssist continuously records your interactions while the web UI is running. To complete an episode and train your model, press `Ctrl+C` in the terminal where CodeAssist is running.
 
-You do not need to successfully solve a LeetCode problem to train the model. You can stop recording the episode by leaving the CodeAssist web UI, returning to the terminal CodeAssist is running in, and using the `ctrl+c` command to start training.
+You do not need to successfully solve a LeetCode problem to train the model. You can stop recording the episode by leaving the CodeAssist web UI, returning to the terminal CodeAssist is running in, and using the `Ctrl+C` command to start training.
 
 During training, CodeAssist will:
 - Compare your edits to the assistant's actions
@@ -287,6 +287,14 @@ This occurs when a container fails to boot. You can view the logs by running `do
 ```
 
 If you see lines like the above, it means Docker is not running, or you do not have permission to connect to Docker. Make sure Docker is properly installed on your system and running.
+
+#### Quick Fix
+```bash
+sudo systemctl restart docker
+sudo systemctl enable docker
+sudo usermod -aG docker $USER
+# then you close your terminal reload it and `cd codeassist` and continue from where you left off.
+```
 
 ## Bind for 0.0.0.0:3000 failed: port is already allocated
 
