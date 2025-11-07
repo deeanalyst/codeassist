@@ -139,7 +139,8 @@ EOF
 ```
 
 If your screen looks exactly as this image below, congrats!
-<img width="230" height="86" alt="environment setup for CPU" src="https://github.com/user-attachments/assets/dd9c6142-c647-436c-971b-17c49daeeb50" />
+
+<img width="460" height="152" alt="environment setup for CPU" src="https://github.com/user-attachments/assets/dd9c6142-c647-436c-971b-17c49daeeb50" />
 
 
 4. Run start python script
@@ -154,7 +155,7 @@ To start CodeAssist, you will need to have a HuggingFace token. Follow [these in
 > Now when you are prompted to use the HF token, when pasting it, it on't be visible. 
 > In the event you feel you have made a mistake, run `Ctrl + C` then `nano .env` edit the token and restart codeassist with `uv run run.py`.
 
-## Web UI<img width="460" height="152" alt="codeassist1" src="https://github.com/user-attachments/assets/4b460b00-c110-4408-b805-00ec14f1e43f" />
+## Web UI
 
 
 After the script is running, your browser should open automatically but if it doesn't, open a window and go to [localhost:3000](http://localhost:3000) to open CodeAssist. 
