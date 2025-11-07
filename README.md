@@ -180,12 +180,12 @@ You should see https://localhost:3000 auto pop up or load in your default browse
 
 ### Login on VPS or Rented GPU Servers
 
-Option 1: Use NGROK
+#### Option 1: Use NGROK (More Stable, Recommended)
 
 1. Signup at [Ngrok Dashboard](https://dashboard.ngrok.com/) and complete the onboarding steps.
+   
 2. Install `ngrok` on your server
-   <pre>
-  ```bash 
+   ```bash 
    curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \ 
    | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && \ 
    echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \ 
@@ -193,7 +193,50 @@ Option 1: Use NGROK
    sudo apt update && \ 
    sudo apt install -y ngrok
    ```
-   </pre>
+   
+3. Save your Auth token
+   ```bash
+   # Looks like this and you will get it if you successfully login to the dashboard of ngrok.
+   ngrok config add-authtoken 31q0..........................3zJcM
+   ```
+   
+4. Create screen for ngrok
+   ```bash
+   screen -S ngrok
+   ```
+   
+5. Forward the port to a web browser on local system
+   ```bash
+   ngrok http 3000
+   ```
+   
+    <img width="402.5" height="258" alt="image" src="https://github.com/user-attachments/assets/bcefb38e-7363-457a-a322-766b7e451606" />
+    
+    > If you get to this image, just Hold `Ctrl` on your keyboard and left-click at the same time to load it in your browser, or copy the link to your local machine browser.
+
+#### Option 2: Use LT
+
+1. Open a new terminal
+   
+2. Install LocalTunnel:
+   ```bash
+   sudo npm install -g localtunnel
+   ```
+
+3. Get password
+   ```bash
+   curl https://loca.lt/mytunnelpassword
+   # The password is actually your VPS IP
+   ```
+
+4. Get forwarded URL
+   ```bash
+   lt --port 3000
+   ```
+   Copy the link that gets outputted like in the image below or hold down `Ctrl` while left-clicking the url.
+
+   <img width="646" height="207" alt="image" src="https://github.com/user-attachments/assets/210c691b-d463-4b39-abf4-33286abe42ac" />
+
 
 When the web UI loads, you'll see a login modal where you can log in with email (which sends a one-time passcode) or with Google. After logging in for the first time, your local credentials will be stored in `persistent-data/auth/userKeyMap.json`.
 
