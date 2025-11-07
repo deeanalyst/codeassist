@@ -155,18 +155,24 @@ To start CodeAssist, you will need to have a HuggingFace token. Follow [these in
 > Now when you are prompted to use the HF token, when pasting it, it on't be visible. 
 > In the event you feel you have made a mistake, run `Ctrl + C` then `nano .env` edit the token and restart codeassist with `uv run run.py`.
 
-## Web UI
-
-
-After the script is running, your browser should open automatically but if it doesn't, open a window and go to [localhost:3000](http://localhost:3000) to open CodeAssist. 
-`N/B:` You will only get to this point if the `Ollama 0.11.10` model suuccessfully downloaded and pulled successfully. You won't get the logs at this point, but if you notice it takes longer than 5 minutes, terminate again using `Ctrl + C`.
-Run the following command to manually pull docker images manually, for me this is fastest and doesn't test your patience.
+Else skip to [Web UI Login to Gensyn Account]()
+## Manual Docker Images PUll
 ```bash
-docker pull ollama/ollama:0.11.10
+docker pull ollama/ollama:0.11.10 2>&1 | tail -20
 docker pull gensynai/codeassist-policy-model:main 2>&1 | tail -20
-
 ```
-At this point 
+
+If you decided to go the manual route. Now continue here:
+1. Start codeassist again
+   ```bash
+   uv run run.py
+   ```
+> You won't be prompted to oinput your HF_Token if this is not the first time running start command.
+
+2. Web UI Login to Gensyn Account
+
+After the script is running, your browser should open automatically when `container setup` is at `3/5` but if it doesn't, open a window and go to [localhost:3000](http://localhost:3000) to open CodeAssist. 
+`N/B:` You will only get to this point if the `Ollama 0.11.10` model suuccessfully downloaded, pulled and started successfully. You won't get the logs at this point, but if you notice it takes longer than 5 minutes, terminate again using `Ctrl + C` and [pull images manually]().
 
 When the web UI loads, you'll see a login modal where you can log in with email (which sends a one-time passcode) or with Google. After logging in for the first time, your local credentials will be stored in `persistent-data/auth/userKeyMap.json`.
 
