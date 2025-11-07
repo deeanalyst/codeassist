@@ -7,6 +7,15 @@ Unlike typical code assistants, CodeAssist writes directly in your editor as you
 
 [Docs](https://docs.gensyn.ai/testnet/codeassist) | [Tutorial](https://docs.gensyn.ai/testnet/codeassist/using-codeassist) | [Leaderboard](https://dashboard.gensyn.ai/?application=CodeAssist)
 
+## 🖥️ System Requirements
+
+| Component              | Minimum Requirement | Recommended |
+|-------------------------|---------------------|--------------|
+| **Memory (RAM)**        | 12 GB               | 32 GB        |
+| **Internet Connection** | Stable              | Stable       |
+| **Storage**             | 10 GB available     | —            |
+| **CPU**                 | Modern multi-core (Intel, AMD, or Apple Silicon) | — |
+
 # Installation
 
 Get started with installing CodeAssist.
@@ -105,7 +114,7 @@ cd codeassist
 
 To run CodeAssist, simply execute using any of the following command:
 
-#### Rented VPS or Local Machine
+#### Rented VPS or Local Machine (Local MMachine highly recommended)
 1. Open a screen (Rented Server else move to Step 2)
 ```bash
 screen -S codeassist
@@ -143,12 +152,23 @@ If your screen looks exactly as this image below, congrats!
 <img width="460" height="152" alt="environment setup for CPU" src="https://github.com/user-attachments/assets/dd9c6142-c647-436c-971b-17c49daeeb50" />
 
 
-4. Run start python script
+4. Run python start script
 
 ```bash
 uv run run.py
 ```
 
+#### GPU Server
+1. Open a screen (Rented Server else move to Step 2)
+```bash
+screen -S codeassist
+```
+
+2. Run python start script
+```bash
+uv run run.py
+```
+   
 ## HuggingFace Token
 
 To start CodeAssist, you will need to have a HuggingFace token. Follow [these instructions](https://huggingface.co/docs/hub/en/security-tokens) and generate a token with `Write` access.
@@ -156,6 +176,7 @@ To start CodeAssist, you will need to have a HuggingFace token. Follow [these in
 > In the event you feel you have made a mistake, run `Ctrl + C` then `nano .env` edit the token and restart codeassist with `uv run run.py`.
 
 Else skip to [Web UI Login to Gensyn Account]()
+
 ## Manual Docker Images PUll
 ```bash
 docker pull ollama/ollama:0.11.10 2>&1 | tail -20
