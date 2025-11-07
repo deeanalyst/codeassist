@@ -275,7 +275,7 @@ def setup_ollama(config: Config) -> docker.models.containers.Container:
         auto_remove=False,
         name="codeassist-ollama",
         ports={
-            "11434/tcp": 11435,  # Expose Ollama API port
+            "11434/tcp": 11434,  # Expose Ollama API port
         },
         volumes={
             f"{os.getcwd()}/ollama-data": {"bind": "/root/.ollama", "mode": "rw"},
