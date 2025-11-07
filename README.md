@@ -174,6 +174,24 @@ Start codeassist again
 After the script is running, your browser should open automatically when `container setup` is at `3/5` but if it doesn't, open a window and go to [localhost:3000](http://localhost:3000) to open CodeAssist. 
 `N/B:` You will only get to this point if the `Ollama 0.11.10` model suuccessfully downloaded, pulled and started successfully. You won't get the logs at this point, but if you notice it takes longer than 5 minutes, terminate again using `Ctrl + C` and [pull images manually](https://github.com/deeanalyst/codeassist/tree/main#manual-docker-images-pull).
 
+### Login on Local Machine
+
+You should see https://localhost:3000 auto pop up or load in your default browser.
+
+### Login on VPS or Rented GPU Servers
+
+Option 1: Use NGROK
+
+1. Signup at [Ngrok Dashboard](https://dashboard.ngrok.com/) and complete the onboarding steps.
+2. Install `ngrok` on your server
+   ```bash
+   curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
+  | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
+  && echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \
+  | sudo tee /etc/apt/sources.list.d/ngrok.list \
+  && sudo apt update \
+  && sudo apt install ngrok```
+
 When the web UI loads, you'll see a login modal where you can log in with email (which sends a one-time passcode) or with Google. After logging in for the first time, your local credentials will be stored in `persistent-data/auth/userKeyMap.json`.
 
 Once logged in, you can select Easy, Medium, or Hard problems from the sidebar. CodeAssist will begin recording an episode. Every click, keystroke, edit, or deletion is logged as training feedback.
