@@ -163,16 +163,16 @@ docker pull gensynai/codeassist-policy-model:main 2>&1 | tail -20
 ```
 
 If you decided to go the manual route. Now continue here:
-1. Start codeassist again
+Start codeassist again
    ```bash
    uv run run.py
    ```
 > You won't be prompted to oinput your HF_Token if this is not the first time running start command.
 
-2. Web UI Login to Gensyn Account
+## Web UI Login to Gensyn Account
 
 After the script is running, your browser should open automatically when `container setup` is at `3/5` but if it doesn't, open a window and go to [localhost:3000](http://localhost:3000) to open CodeAssist. 
-`N/B:` You will only get to this point if the `Ollama 0.11.10` model suuccessfully downloaded, pulled and started successfully. You won't get the logs at this point, but if you notice it takes longer than 5 minutes, terminate again using `Ctrl + C` and [pull images manually]().
+`N/B:` You will only get to this point if the `Ollama 0.11.10` model suuccessfully downloaded, pulled and started successfully. You won't get the logs at this point, but if you notice it takes longer than 5 minutes, terminate again using `Ctrl + C` and [pull images manually](https://github.com/deeanalyst/codeassist/tree/main#manual-docker-images-pull).
 
 When the web UI loads, you'll see a login modal where you can log in with email (which sends a one-time passcode) or with Google. After logging in for the first time, your local credentials will be stored in `persistent-data/auth/userKeyMap.json`.
 
