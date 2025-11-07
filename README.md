@@ -13,7 +13,7 @@ Unlike typical code assistants, CodeAssist writes directly in your editor as you
 |-------------------------|---------------------|--------------|
 | **Memory (RAM)**        | 12 GB               | 32 GB        |
 | **Internet Connection** | Stable              | Stable       |
-| **Storage**             | 10 GB available     | —            |
+| **Storage**             | 30 GB available     | —            |
 | **CPU**                 | Modern multi-core (Intel, AMD, or Apple Silicon) | — |
 
 # Installation
