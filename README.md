@@ -75,6 +75,23 @@ cd
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.10 1
 sudo update-alternatives --config python3
 ```
+
+## Install NPM & Node.js
+
+```bash
+# 1️⃣ Remove any existing node + npm (optional if you want a clean slate)
+sudo apt remove -y nodejs npm
+
+# 2️⃣ Update and install Node.js 22 from NodeSource
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# 3️⃣ Verify installation
+node -v   # should show v22.x
+npm -v    # should show ~10.x (latest stable)
+```
+
+
 WHen you run the immediately above code block, it may take some time to fully install, 3-10 miutes, depending on your CPU Power.
 At this point you will be prompted to choose a number, press `Enter` once and check Python version again with `python --version`.
 
