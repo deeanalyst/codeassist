@@ -121,7 +121,7 @@ uv --version
 To download the code, simply clone the repository:
 
 ```bash
-git clone https://github.com/deeanalyst/codeassist.git
+git clone https://github.com/gensyn-ai/codeassist/
 cd codeassist
 ```
 
