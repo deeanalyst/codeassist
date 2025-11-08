@@ -75,6 +75,8 @@ cd
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.10 1
 sudo update-alternatives --config python3
 ```
+WHen you run the immediately above code block, it may take some time to fully install, 3-10 miutes, depending on your CPU Power.
+At this point you will be prompted to choose a number, press `Enter` once and check Python version again with `python --version`.
 
 ## Install NPM & Node.js
 
@@ -90,10 +92,6 @@ sudo apt install -y nodejs
 node -v   # should show v22.x
 npm -v    # should show ~10.x (latest stable)
 ```
-
-
-WHen you run the immediately above code block, it may take some time to fully install, 3-10 miutes, depending on your CPU Power.
-At this point you will be prompted to choose a number, press `Enter` once and check Python version again with `python --version`.
 
 ## UV
 
