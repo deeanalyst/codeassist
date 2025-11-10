@@ -201,7 +201,7 @@ docker pull gensynai/codeassist-policy-model:main 2>&1 | tail -20
 If you decided to go the manual route. Now continue here:
 Start codeassist again
    ```bash
-   uv run run.py
+   uv run run.py --no-pull
    ```
 > You won't be prompted to oinput your HF_Token if this is not the first time running start command.
 
