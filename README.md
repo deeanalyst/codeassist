@@ -116,7 +116,7 @@ source ~/.bashrc
 uv --version
 ```
 
-# Downloading the Code
+# Downloading Code Assist
 
 To download the code, simply clone the repository:
 
