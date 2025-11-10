@@ -55,26 +55,10 @@ sudo systemctl restart docker
 Python is required to run the main script that handles your environment. We require a version no older than 3.10.
 
 ```bash
-sudo apt update && sudo apt install -y build-essential libssl-dev zlib1g-dev libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev libgdbm-dev libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev tk-dev wget uuid-dev
-
-cd /usr/src
-sudo wget https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz
-sudo tar xzf Python-3.10.15.tgz
-cd Python-3.10.15
-
-sudo ./configure --enable-optimizations
-sudo make -j$(nproc)
-sudo make altinstall
-
-# Verify
-python3.10 --version
-
-# (Optional) Make python command point to python3.10
-sudo update-alternatives --install /usr/bin/python python /usr/local/bin/python3.10 1
-python --version
-cd
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.10 1
-sudo update-alternatives --config python3
+sudo apt install python3 \
+python3-pip \
+python3-venv \
+python3-dev -y
 ```
 WHen you run the immediately above code block, it may take some time to fully install, 3-10 miutes, depending on your CPU Power.
 At this point you will be prompted to choose a number, press `Enter` once and check Python version again with `python --version`.
@@ -88,6 +72,11 @@ sudo apt remove -y nodejs npm
 # 2️⃣ Update and install Node.js 22 from NodeSource
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt install -y nodejs
+
+# Install npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+source ~/.bashrc
+nvm --version
 
 # 3️⃣ Verify installation
 node -v   # should show v22.x
