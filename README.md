@@ -12,6 +12,7 @@ Unlike typical code assistants, CodeAssist writes directly in your editor as you
 | Component              | Minimum Requirement | Recommended |
 |-------------------------|---------------------|--------------|
 | **Memory (RAM)**        | 12 GB               | 32 GB        |
+| **Cores**                 | 4 | 8 |
 | **Internet Connection** | Stable              | Stable       |
 | **Storage**             | 30 GB available     | —            |
 | **CPU**                 | Modern multi-core (Intel, AMD, or Apple Silicon) | — |
