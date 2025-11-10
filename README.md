@@ -58,10 +58,9 @@ Python is required to run the main script that handles your environment. We requ
 sudo apt install python3 \
 python3-pip \
 python3-venv \
-python3-dev -y
+python3-dev -y \
+python --version
 ```
-WHen you run the immediately above code block, it may take some time to fully install, 3-10 miutes, depending on your CPU Power.
-At this point you will be prompted to choose a number, press `Enter` once and check Python version again with `python --version`.
 
 ## Install NPM & Node.js
 
@@ -75,6 +74,11 @@ sudo apt install -y nodejs
 
 # Install npm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+cat << 'EOF' >> ~/.bashrc
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+EOF
 source ~/.bashrc
 nvm --version
 
