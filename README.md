@@ -178,7 +178,15 @@ screen -S codeassist
 ```bash
 uv run run.py
 ```
-   
+  To detach the screen, run `Ctrl + A + D`
+  
+3. Check logs (must detach from sccreen first)
+```bash
+cd && cd codeassist
+# check run log which tells you if you did anything wrong
+tail -fn 20 logs/run.log
+```
+
 ## HuggingFace Token
 
 To start CodeAssist, you will need to have a HuggingFace token. Follow [these instructions](https://huggingface.co/docs/hub/en/security-tokens) and generate a token with `Write` access.
@@ -198,7 +206,7 @@ Start codeassist again
    ```bash
    uv run run.py --no-pull
    ```
-> You won't be prompted to oinput your HF_Token if this is not the first time running start command.
+> You won't be prompted to input your HF_Token if this is not the first time running start command.
 
 ## Web UI Login to Gensyn Account
 
