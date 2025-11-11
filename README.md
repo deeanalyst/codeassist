@@ -224,14 +224,15 @@ You should see https://localhost:3000 auto pop up or load in your default browse
 1. Signup at [Ngrok Dashboard](https://dashboard.ngrok.com/) and complete the onboarding steps.
    
 2. Install `ngrok` on your server
-   ```bash 
-  curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
-    | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
-    && echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \
-    | sudo tee /etc/apt/sources.list.d/ngrok.list \
-    && sudo apt update \
-    && sudo apt install ngrok
-   ```
+
+```bash
+curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
+  | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
+  && echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \
+  | sudo tee /etc/apt/sources.list.d/ngrok.list \
+  && sudo apt update \
+  && sudo apt install ngrok
+
    
 3. Save your Auth token
    ```bash
