@@ -55,11 +55,12 @@ sudo systemctl restart docker
 Python is required to run the main script that handles your environment. We require a version no older than 3.10.
 
 ```bash
-sudo apt install python3 \
-python3-pip \
-python3-venv \
-python3-dev -y \
-python --version
+sudo apt install -y \
+  python3 \
+  python3-pip \
+  python3-venv \
+  python3-dev
+python3 --version
 ```
 
 ## Install NPM & Node.js
