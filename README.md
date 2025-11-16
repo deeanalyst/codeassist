@@ -297,7 +297,9 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
       ```
    3. Copy the below command
       ```bash
-      send-keys C-c
+      send-keys C-c # Option 1
+      # If this fails, copy the other command immediately below in this same code block
+      send-keys -t 0 C-c # Option 2
       ```
    4. Right-click anywhere within the browser terminal and as in the image below press the `Paste` button from the pop-up, this should automatically trigger training on your Terminal
       
