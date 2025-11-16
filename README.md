@@ -293,7 +293,7 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
       ```
    2. Then press:
       ```bash
-      : # i.e Shift + Semi-Colon on your Keyboard
+      : # i.e Shift + Semi-Colon/Colon Button on your Keyboard
       ```
    3. Copy the below command
       ```bash
