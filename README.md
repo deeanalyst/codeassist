@@ -277,7 +277,9 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
 
    <img width="646" height="207" alt="image" src="https://github.com/user-attachments/assets/210c691b-d463-4b39-abf4-33286abe42ac" />
 
-### GPU Setup with [Octa](https://marketplace.octa.space/)
+### GPU Setup with [👉 Octa: Create an Account Here 👈](https://octa.space?ref=rB0IMePn4cZ)
+  > Fund your account with $5 - $15.
+  > Also note that to save on cost, after creating these GPU sessions and training for as much as you can, do well to destroy the session till you want to test CodeAssist again.
 
 1. Setup CodeAssist on Octa using this [Guide](https://docs.octa.space/gensyn-codeassist)
 
