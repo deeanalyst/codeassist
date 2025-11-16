@@ -308,6 +308,7 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
       <img width="400" height="206.75" alt="image" src="https://github.com/user-attachments/assets/a811ae8e-9a01-4231-a0e2-636a077509d0" />
 
    To restart another training session when the last line of your terminal looks similar to the immediate screenshot above.
+
    Run `Ctrl + Shift + V` to paste the below command.
    
    ```bash
