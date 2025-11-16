@@ -309,7 +309,7 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
 
    To restart another training session when the last line of your terminal looks similar to the immediate screenshot above.
 
-   Run `Ctrl + Shift + V` to paste the below command.
+   Run `Ctrl + Shift + V` to paste the below command, then `Enter` to run. Once you get the success message on your terminal - `CodeAssist Started` just reload the Web UI page and login again if prompted or just start solving those Leetcode Problems.
    
    ```bash
    cd codeassist
