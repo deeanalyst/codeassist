@@ -303,8 +303,8 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
       
       <img width="480" height="260.25" alt="codeassist4" src="https://github.com/user-attachments/assets/65da883a-fb1b-4bec-8a65-92b1fdce5b0f" />
 
-   And finally if your model trains right you should get an image like the below of successful training, transactions sent and model push to Huggingface.
-
+      And finally if your model trains right you should get an image like the below of successful training, transactions sent and model push to Huggingface.
+    
       <img width="400" height="206.75" alt="image" src="https://github.com/user-attachments/assets/a811ae8e-9a01-4231-a0e2-636a077509d0" />
 
    To restart another training session when the last line of your terminal looks similar to the immediate screenshot above, run `Ctrl + Shift + V` to paste the below command.
