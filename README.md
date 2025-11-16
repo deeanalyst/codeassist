@@ -277,6 +277,42 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
 
    <img width="646" height="207" alt="image" src="https://github.com/user-attachments/assets/210c691b-d463-4b39-abf4-33286abe42ac" />
 
+### GPU Setup with [Octa](https://marketplace.octa.space/)
+
+1. Setup CodeAssist on Octa using this [Guide](https://docs.octa.space/gensyn-codeassist)
+
+2. If you have successfully set it up on Octa Space, now you werre not told in that guide how to properly run the train trigger.
+   If you outrightly just do `Ctrl + C` on the Web Terminal, you will end up with the `Error: Keyboard Interrupt`.
+   To do this right, do the following:
+
+   1. Realize that the Web Terminal is a `tmux` session, run this:
+      ```bash
+      Ctrl + B # On your keyboard
+      ```
+   2. Then press:
+      ```bash
+      : # i.e Shift + Semi-Colon on your Keyboard
+      ```
+   3. Copy the below command
+      ```bash
+      send-keys C-c
+      ```
+   4. Right-click anywhere within the browser terminal and as in the image below press the `Paste` button from the pop-up, this should automatically trigger training on your Terminal
+      
+      <img width="480" height="260.25" alt="codeassist4" src="https://github.com/user-attachments/assets/65da883a-fb1b-4bec-8a65-92b1fdce5b0f" />
+
+   And finally if your model trains right you should get an image like the below of successful training, transactions sent and model push to Huggingface.
+
+      <img width="400" height="206.75" alt="image" src="https://github.com/user-attachments/assets/a811ae8e-9a01-4231-a0e2-636a077509d0" />
+
+   To restart another training session when the last line of your terminal looks similar to the immediate screenshot above, run `Ctrl + Shift + V` to paste the below command.
+   
+   ```bash
+   cd codeassist
+   source .venv/bin/activate
+   source ~/.bashrc
+   uv run run.py
+   ```
 
 When the web UI loads, you'll see a login modal where you can log in with email (which sends a one-time passcode) or with Google. After logging in for the first time, your local credentials will be stored in `persistent-data/auth/userKeyMap.json`.
 
